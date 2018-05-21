@@ -1,6 +1,7 @@
 <?php
 use Goutte\Client;
 require "vendor/autoload.php";
+date_default_timezone_set("Asia/Shanghai");
 
 $client = new Client();
 $client->setHeader('user-agent', "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.2272.101 Safari/537.36");
@@ -43,7 +44,8 @@ for ($i=1; $i<=406; $i++) {
                     });
                 }
             }
-            $file = fopen("jipingirl.html", "a");
+            $filename = "jipingirl_" .date("Ymd") . ".html";
+            $file = fopen($filename, "a");
             fwrite($file, $pageone);
             fclose($file);
         }
