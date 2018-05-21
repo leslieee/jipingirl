@@ -22,8 +22,8 @@ for ($i=1; $i<=406; $i++) {
             $pageone = "";
             $crawler->filter('p > img')->each(function ($node) {
                 global $pageone;
-                $pageone = $pageone . "<img src=\"" . $node->attr("src") . "\">" . "\n";
-                echo "<img src=\"" . $node->attr("src") . "\">" . "\n";
+                $pageone = $pageone . "<a target=\"_blank\" href=\"" . $node->attr("src") . "\"><img src=\"" . $node->attr("src") . "\"></a>" . "\n";
+                echo "<a target=\"_blank\" href=\"" . $node->attr("src") . "\"><img src=\"" . $node->attr("src") . "\"></a>" . "\n";
             });
             // 翻页数据
             $crawler->filter('.page-link > a')->each(function ($node) {
@@ -38,8 +38,8 @@ for ($i=1; $i<=406; $i++) {
                     $crawler = $client->request('GET', $url);
                     $crawler->filter('p > img')->each(function ($node) {
                         global $pageone;
-                        $pageone = $pageone . "<img src=\"" . $node->attr("src") . "\">" . "\n";
-                        echo "<img src=\"" . $node->attr("src") . "\">" . "\n";
+                        $pageone = $pageone . "<a target=\"_blank\" href=\"" . $node->attr("src") . "\"><img src=\"" . $node->attr("src") . "\"></a>" . "\n";
+                        echo "<a target=\"_blank\" href=\"" . $node->attr("src") . "\"><img src=\"" . $node->attr("src") . "\"></a>" . "\n";
                     });
                 }
             }
