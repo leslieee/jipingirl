@@ -56,7 +56,7 @@ for ($i=1; $i<=1; $i++) {
 // 更新主页
 $filename = "jipingirl_" .date("Ymd") . ".html";
 $count = countLine($filename);
-$insertContent = "<a href=\"http://ccccccc.cf/" . $filename . "\">" . date("Ymd") . " 更新 " . $count . "张</a><br>";
+$insertContent = "<a href=\"http://ccccccc.cf/data/" . $filename . "\">" . date("Ymd") . " 更新 " . $count . "张</a><br>";
 insertAfterTarget("index.html", $insertContent, "<!--insert-->");
 
 // 统计行数
