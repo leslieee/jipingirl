@@ -44,7 +44,7 @@ for ($i=1; $i<=1; $i++) {
                     });
                 }
             }
-            $filename = "jipingirl_" .date("Ymd") . ".html";
+            $filename = "./data/jipingirl_" .date("Ymd") . ".html";
             $file = fopen($filename, "a");
             fwrite($file, $pageone);
             fclose($file);
@@ -54,7 +54,7 @@ for ($i=1; $i<=1; $i++) {
 
 
 // 更新主页
-$filename = "jipingirl_" .date("Ymd") . ".html";
+$filename = "./data/jipingirl_" .date("Ymd") . ".html";
 $count = countLine($filename);
 $insertContent = "<a href=\"http://ccccccc.cf/data/" . $filename . "\">" . date("Ymd") . " 更新 " . $count . "张</a><br>";
 insertAfterTarget("index.html", $insertContent, "<!--insert-->");
