@@ -51,3 +51,46 @@ for ($i=1; $i<=406; $i++) {
         }
     }
 }
+
+
+// 更新主页
+$filename = "jipingirl_" .date("Ymd") . ".html";
+$count = countLine($filename);
+$insertContent = "<a href=\"http://ccccccc.cf/" . $filename . "\">" . date("Ymd") . " 更新 " . $count . "张</a><br>";
+insertAfterTarget("index.html", $insertContent, "<!--insert-->");
+
+// 统计行数
+function countLine($file) {
+    $fp=fopen($file, "r");
+    $i=0;
+    while(!feof($fp)) {
+        //每次读取2M
+        if($data=fread($fp,1024*1024*2)){
+            //计算读取到的行数
+            $num=substr_count($data,"\n");
+            $i+=$num;
+        }
+    }
+    fclose($fp);
+    return $i;
+}
+
+#在需要查找的内容后一行新起一行插入内容
+function insertAfterTarget($filePath, $insertCont, $target)
+{
+    $result = null;
+    $fileCont = file_get_contents($filePath);
+    $targetIndex = strpos($fileCont, $target); #查找目标字符串的坐标
+
+    if ($targetIndex !== false) {
+        #找到target的后一个换行符
+        $chLineIndex = strpos(substr($fileCont, $targetIndex), "\n") + $targetIndex;
+        if ($chLineIndex !== false) {
+            #插入需要插入的内容
+            $result = substr($fileCont, 0, $chLineIndex + 1) . $insertCont . "\n" . substr($fileCont, $chLineIndex + 1);
+            $fp = fopen($filePath, "w+");
+            fwrite($fp, $result);
+            fclose($fp);
+        }
+    }
+}
