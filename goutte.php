@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Shanghai");
 $client = new Client();
 $client->setHeader('user-agent', "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.2272.101 Safari/537.36");
 // 拉取列表
-for ($i=1; $i<=406; $i++) {
+for ($i=1; $i<=1; $i++) {
     $pageUrl = "https://mrcong.com/category/nguoi-dep/page/" . $i;
     $crawler = $client->request('GET', $pageUrl);
     $listArray = [];
